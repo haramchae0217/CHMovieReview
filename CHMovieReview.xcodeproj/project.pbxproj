@@ -17,6 +17,8 @@
 		83A1FF202835649500345463 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A1FF1F2835649500345463 /* DetailViewController.swift */; };
 		83A1FF22283564A200345463 /* AddReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A1FF21283564A200345463 /* AddReviewViewController.swift */; };
 		83A1FF24283564AF00345463 /* MyReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A1FF23283564AF00345463 /* MyReviewViewController.swift */; };
+		83AFC3BE283891B800BEF2A4 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AFC3BD283891B800BEF2A4 /* MovieTableViewCell.swift */; };
+		83AFC3C0283891CA00BEF2A4 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AFC3BF283891CA00BEF2A4 /* Movie.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		83A1FF1F2835649500345463 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		83A1FF21283564A200345463 /* AddReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewViewController.swift; sourceTree = "<group>"; };
 		83A1FF23283564AF00345463 /* MyReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReviewViewController.swift; sourceTree = "<group>"; };
+		83AFC3BD283891B800BEF2A4 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MovieTableViewCell.swift; path = CHMovieReview/Source/Cell/MovieTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		83AFC3BF283891CA00BEF2A4 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,19 +68,61 @@
 		83A1FF082835325D00345463 /* CHMovieReview */ = {
 			isa = PBXGroup;
 			children = (
+				83AFC3B92838893F00BEF2A4 /* Resource */,
+				83AFC3B82838893700BEF2A4 /* Source */,
+				83A1FF172835325E00345463 /* Info.plist */,
+			);
+			path = CHMovieReview;
+			sourceTree = "<group>";
+		};
+		83AFC3B82838893700BEF2A4 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				83AFC3BC2838897200BEF2A4 /* Model */,
+				83AFC3BB2838896700BEF2A4 /* Cell */,
+				83AFC3BA2838895800BEF2A4 /* VC */,
 				83A1FF092835325D00345463 /* AppDelegate.swift */,
 				83A1FF0B2835325D00345463 /* SceneDelegate.swift */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		83AFC3B92838893F00BEF2A4 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				83A1FF0F2835325D00345463 /* Main.storyboard */,
+				83A1FF122835325E00345463 /* Assets.xcassets */,
+				83A1FF142835325E00345463 /* LaunchScreen.storyboard */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		83AFC3BA2838895800BEF2A4 /* VC */ = {
+			isa = PBXGroup;
+			children = (
 				83A1FF0D2835325D00345463 /* MainViewController.swift */,
 				83A1FF1D2835648500345463 /* SearchViewController.swift */,
 				83A1FF1F2835649500345463 /* DetailViewController.swift */,
 				83A1FF21283564A200345463 /* AddReviewViewController.swift */,
 				83A1FF23283564AF00345463 /* MyReviewViewController.swift */,
-				83A1FF0F2835325D00345463 /* Main.storyboard */,
-				83A1FF122835325E00345463 /* Assets.xcassets */,
-				83A1FF142835325E00345463 /* LaunchScreen.storyboard */,
-				83A1FF172835325E00345463 /* Info.plist */,
 			);
-			path = CHMovieReview;
+			path = VC;
+			sourceTree = "<group>";
+		};
+		83AFC3BB2838896700BEF2A4 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				83AFC3BD283891B800BEF2A4 /* MovieTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		83AFC3BC2838897200BEF2A4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				83AFC3BF283891CA00BEF2A4 /* Movie.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,10 +198,12 @@
 			files = (
 				83A1FF22283564A200345463 /* AddReviewViewController.swift in Sources */,
 				83A1FF0E2835325D00345463 /* MainViewController.swift in Sources */,
+				83AFC3C0283891CA00BEF2A4 /* Movie.swift in Sources */,
 				83A1FF0A2835325D00345463 /* AppDelegate.swift in Sources */,
 				83A1FF202835649500345463 /* DetailViewController.swift in Sources */,
 				83A1FF1E2835648500345463 /* SearchViewController.swift in Sources */,
 				83A1FF0C2835325D00345463 /* SceneDelegate.swift in Sources */,
+				83AFC3BE283891B800BEF2A4 /* MovieTableViewCell.swift in Sources */,
 				83A1FF24283564AF00345463 /* MyReviewViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
