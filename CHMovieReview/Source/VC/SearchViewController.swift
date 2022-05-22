@@ -68,6 +68,13 @@ extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 130
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "DetailVC") as? DetailViewController else { return }
+        let detailCell = MyDB.filteredMovie[indexPath.row]
+        detailVC.detailMovie = detailCell        
+        detailVC.modalPresentationStyle = .overCurrentContext
+        self.present(detailVC, animated: true, completion: nil)
+    }
 }
 
 extension SearchViewController: UISearchControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate {

@@ -13,4 +13,5 @@ struct Movie {
     var director: String
     var actors: [String]
     var rate: String = "평가 기록이 없음."
+    var summary: String
 }
