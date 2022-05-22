@@ -11,13 +11,10 @@ class SearchViewController: UIViewController {
 
     @IBOutlet weak var movieTableView: UITableView!
     
-    var filteredMovie: [Movie] = []
-    var actors: String = ""
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        filteredMovie = Movie.movieItem
+        MyDB.filteredMovie = MyDB.movieItem
         
         tableViewSet()
         searchBarSet()
@@ -25,8 +22,6 @@ class SearchViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        filteredMovie = Movie.movieItem
         movieTableView.reloadData()
     }
 
@@ -36,20 +31,21 @@ class SearchViewController: UIViewController {
     }
     
     func searchBarSet() {
-        let searchController = UISearchController(searchResultsController: nil)
-        searchController.searchResultsUpdater = self
-        searchController.searchBar.delegate = self
-        searchController.searchBar.placeholder = "영화 제목을 검색하세요."
+        let searchMovie = UISearchController(searchResultsController: nil)
+        searchMovie.searchResultsUpdater = self
+        searchMovie.searchBar.delegate = self
+        searchMovie.searchBar.placeholder = "영화 제목을 검색하세요."
         navigationItem.hidesSearchBarWhenScrolling = false
-        navigationItem.searchController = searchController
+        navigationItem.searchController = searchMovie
     }
     
 }
 extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieTableViewCell.identifier, for: indexPath) as? MovieTableViewCell else { return UITableViewCell() }
-        if !filteredMovie.isEmpty {
-            let movieCell = filteredMovie[indexPath.row]
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.identifier, for: indexPath) as? SearchTableViewCell else { return UITableViewCell() }
+        if !MyDB.filteredMovie.isEmpty {
+            let movieCell = MyDB.filteredMovie[indexPath.row]
+            var actors: String = ""
             for data in movieCell.actors {
                 actors += "\(data), "
             }
@@ -64,27 +60,27 @@ extension SearchViewController: UITableViewDataSource {
         return cell
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filteredMovie.count
+        return MyDB.filteredMovie.count
     }
 }
 
 extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
+        return 130
     }
 }
 
 extension SearchViewController: UISearchControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate {
     func updateSearchResults(for searchController: UISearchController) {
-        if let text = searchController.searchBar.text {
-            filteredMovie = Movie.movieItem.filter{ $0.title.lowercased().contains(text)}
+        if let movieTitle = searchController.searchBar.text {
+            MyDB.filteredMovie = MyDB.movieItem.filter{ $0.title.lowercased().contains(movieTitle)}
         }
     }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         movieTableView.reloadData()
     }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        filteredMovie = Movie.movieItem
+        MyDB.filteredMovie = MyDB.movieItem
         movieTableView.reloadData()
     }
 }

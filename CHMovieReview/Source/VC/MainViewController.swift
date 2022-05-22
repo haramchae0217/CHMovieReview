@@ -11,8 +11,6 @@ class MainViewController: UIViewController {
 
     @IBOutlet weak var movieTableView: UITableView!
     
-    var actors = ""
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,7 +29,8 @@ class MainViewController: UIViewController {
 extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieTableViewCell.identifier, for: indexPath) as? MovieTableViewCell else { return UITableViewCell() }
-        let movieCell = Movie.movieItem[indexPath.row]
+        let movieCell = MyDB.movieItem[indexPath.row]
+        var actors: String = ""
         for data in movieCell.actors {
             actors += "\(data), "
         }
@@ -45,12 +44,12 @@ extension MainViewController: UITableViewDataSource {
         return cell
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Movie.movieItem.count
+        return MyDB.movieItem.count
     }
 }
 
 extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
+        return 130
     }
 }
