@@ -11,6 +11,8 @@ class MainViewController: UIViewController {
 
     @IBOutlet weak var movieTableView: UITableView!
     
+    var actors = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,11 +32,16 @@ extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieTableViewCell.identifier, for: indexPath) as? MovieTableViewCell else { return UITableViewCell() }
         let movieCell = Movie.movieItem[indexPath.row]
+        for data in movieCell.actors {
+            actors += "\(data), "
+        }
+        
         cell.poster.image = movieCell.poster
-        cell.title.text = "\(movieCell.title)"
+        cell.title.text = movieCell.title
         cell.director.text = "감독 : \(movieCell.director)"
-        cell.actors.text = " 배우 : \(movieCell.actors)"
+        cell.actors.text = " 배우 : \(actors)"
         cell.rate.text = movieCell.rate
+        
         return cell
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

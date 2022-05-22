@@ -8,7 +8,7 @@
 import UIKit
 
 struct Movie {
-    var poster: UIImage
+    var poster: UIImage = UIImage(systemName: "folder")!
     var title: String
     var director: String
     var actors: [String]
