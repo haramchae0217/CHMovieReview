@@ -18,6 +18,11 @@ class MainViewController: UIViewController {
         movieTableView.reloadData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        movieTableView.reloadData()
+    }
+    
     func tableViewSet() {
         movieTableView.delegate = self
         movieTableView.dataSource = self
@@ -51,5 +56,13 @@ extension MainViewController: UITableViewDataSource {
 extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 130
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "DetailVC") as? DetailViewController else { return }
+        let movieInfo = MyDB.movieItem[indexPath.row]
+        detailVC.detailMovie = movieInfo
+        detailVC.modalPresentationStyle = .overCurrentContext
+        self.present(detailVC, animated: true)
     }
 }

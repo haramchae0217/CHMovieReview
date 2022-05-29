@@ -11,10 +11,12 @@ class SearchViewController: UIViewController {
 
     @IBOutlet weak var movieTableView: UITableView!
     
+    var filteredMovie: [Movie] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        MyDB.filteredMovie = MyDB.movieItem
+        filteredMovie = MyDB.movieItem
         
         tableViewSet()
         searchBarSet()
@@ -43,8 +45,8 @@ class SearchViewController: UIViewController {
 extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.identifier, for: indexPath) as? SearchTableViewCell else { return UITableViewCell() }
-        if !MyDB.filteredMovie.isEmpty {
-            let movieCell = MyDB.filteredMovie[indexPath.row]
+        if !filteredMovie.isEmpty {
+            let movieCell = filteredMovie[indexPath.row]
             var actors: String = ""
             for data in movieCell.actors {
                 actors += "\(data), "
@@ -60,7 +62,7 @@ extension SearchViewController: UITableViewDataSource {
         return cell
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return MyDB.filteredMovie.count
+        return filteredMovie.count
     }
 }
 
@@ -70,24 +72,25 @@ extension SearchViewController: UITableViewDelegate {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "DetailVC") as? DetailViewController else { return }
-        let detailCell = MyDB.filteredMovie[indexPath.row]
+        let detailCell = filteredMovie[indexPath.row]
         detailVC.detailMovie = detailCell        
         detailVC.modalPresentationStyle = .overCurrentContext
-        self.present(detailVC, animated: true, completion: nil)
+        self.present(detailVC, animated: true)
     }
 }
 
 extension SearchViewController: UISearchControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate {
     func updateSearchResults(for searchController: UISearchController) {
         if let movieTitle = searchController.searchBar.text {
-            MyDB.filteredMovie = MyDB.movieItem.filter{ $0.title.lowercased().contains(movieTitle)}
+            filteredMovie = MyDB.movieItem.filter{ $0.title.lowercased().contains(movieTitle) }
+            movieTableView.reloadData()
         }
     }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         movieTableView.reloadData()
     }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        MyDB.filteredMovie = MyDB.movieItem
+        filteredMovie = MyDB.movieItem
         movieTableView.reloadData()
     }
 }

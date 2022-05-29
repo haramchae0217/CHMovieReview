@@ -26,9 +26,12 @@ class DetailViewController: UIViewController {
     }
 
     @IBAction func addReviewButton(_ sender: UIButton) {
-        guard let addReviewVC = self.storyboard?.instantiateViewController(withIdentifier: "AddReviewVC") as? AddReviewViewController else { return }
+        guard let addReviewNC = self.storyboard?.instantiateViewController(withIdentifier: "AddReviewNC") as? UINavigationController else { return }
+        guard let addReviewVC = addReviewNC.children.first as? AddReviewViewController else { return }
         addReviewVC.movieInfo = detailMovie
-        self.navigationController?.pushViewController(addReviewVC, animated: true)
+        
+        addReviewNC.modalPresentationStyle = .fullScreen
+        self.present(addReviewNC, animated: true)
     }
     
     @IBAction func closeDetailVC(_ sender: UIButton) {
