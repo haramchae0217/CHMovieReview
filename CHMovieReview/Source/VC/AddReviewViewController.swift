@@ -25,18 +25,7 @@ class AddReviewViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let movieInfo = movieInfo {
-            for data in movieInfo.actors{
-                actor += "\(data), "
-            }
-            poster.image = movieInfo.poster
-            movieTitle.text = movieInfo.title
-            director.text = "감독 : \(movieInfo.director)"
-            actors.text = "배우 : \(actor)"
-            rate.text = movieInfo.rate
-            summary.text = movieInfo.summary
-            limitText.text = "\(textCount) / 100자"
-        }
+        
 
     }
 

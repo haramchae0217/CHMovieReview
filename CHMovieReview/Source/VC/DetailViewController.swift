@@ -19,9 +19,7 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         
         if let detailMovie = detailMovie {
-            movieTitle.text = detailMovie.title
-            poster.image = detailMovie.poster
-            summary.text = detailMovie.summary
+            
         }
     }
 

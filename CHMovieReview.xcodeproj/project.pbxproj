@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		835C9F0F2849CEFB00BA249D /* Credit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835C9F0E2849CEFB00BA249D /* Credit.swift */; };
 		83A1FF0A2835325D00345463 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A1FF092835325D00345463 /* AppDelegate.swift */; };
 		83A1FF0C2835325D00345463 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A1FF0B2835325D00345463 /* SceneDelegate.swift */; };
 		83A1FF0E2835325D00345463 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A1FF0D2835325D00345463 /* MainViewController.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		835C9F0E2849CEFB00BA249D /* Credit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credit.swift; sourceTree = "<group>"; };
 		83A1FF062835325D00345463 /* CHMovieReview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CHMovieReview.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83A1FF092835325D00345463 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		83A1FF0B2835325D00345463 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -131,8 +133,9 @@
 		83AFC3BC2838897200BEF2A4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				83AFC3BF283891CA00BEF2A4 /* Movie.swift */,
 				83B8FCFD283A637E00B16F50 /* MyDB.swift */,
+				83AFC3BF283891CA00BEF2A4 /* Movie.swift */,
+				835C9F0E2849CEFB00BA249D /* Credit.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -220,6 +223,7 @@
 				83A1FF0E2835325D00345463 /* MainViewController.swift in Sources */,
 				83AFC3C0283891CA00BEF2A4 /* Movie.swift in Sources */,
 				83A1FF0A2835325D00345463 /* AppDelegate.swift in Sources */,
+				835C9F0F2849CEFB00BA249D /* Credit.swift in Sources */,
 				83B8FCFC283A625400B16F50 /* UIAlertController++Extension.swift in Sources */,
 				83A1FF202835649500345463 /* DetailViewController.swift in Sources */,
 				83A1FF1E2835648500345463 /* SearchViewController.swift in Sources */,

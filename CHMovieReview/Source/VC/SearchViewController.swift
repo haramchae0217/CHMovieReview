@@ -16,7 +16,7 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        filteredMovie = MyDB.movieItem
+        filteredMovie = MyDB.movieList
         
         tableViewSet()
         searchBarSet()
@@ -46,21 +46,12 @@ extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.identifier, for: indexPath) as? SearchTableViewCell else { return UITableViewCell() }
         if !filteredMovie.isEmpty {
-            let movieCell = filteredMovie[indexPath.row]
-            var actors: String = ""
-            for data in movieCell.actors {
-                actors += "\(data), "
-            }
             
-            cell.poster.image = movieCell.poster
-            cell.title.text = movieCell.title
-            cell.director.text = "감독 : \(movieCell.director)"
-            cell.actors.text = " 배우 : \(actors)"
-            cell.rate.text = movieCell.rate
         }
         
         return cell
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredMovie.count
     }
@@ -70,6 +61,7 @@ extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 130
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "DetailVC") as? DetailViewController else { return }
         let detailCell = filteredMovie[indexPath.row]
@@ -82,15 +74,17 @@ extension SearchViewController: UITableViewDelegate {
 extension SearchViewController: UISearchControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate {
     func updateSearchResults(for searchController: UISearchController) {
         if let movieTitle = searchController.searchBar.text {
-            filteredMovie = MyDB.movieItem.filter{ $0.title.lowercased().contains(movieTitle) }
+            filteredMovie = MyDB.movieList.filter{ $0.title.lowercased().contains(movieTitle) }
             movieTableView.reloadData()
         }
     }
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         movieTableView.reloadData()
     }
+    
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        filteredMovie = MyDB.movieItem
+        filteredMovie = MyDB.movieList
         movieTableView.reloadData()
     }
 }

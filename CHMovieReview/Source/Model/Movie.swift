@@ -7,11 +7,14 @@
 
 import UIKit
 
-struct Movie {
-    var poster: UIImage
-    var title: String
-    var director: String
-    var actors: [String]
-    var rate: String = "평가 기록이 없음."
-    var summary: String
+struct MovieService: Decodable {
+    var results: [Movie]
 }
+
+struct Movie: Decodable {
+    var title: String
+    var overview: String
+    var poster_path: String
+    var id: Int
+}
+
