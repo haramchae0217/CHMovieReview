@@ -11,6 +11,7 @@ class MainViewController: UIViewController {
 
     @IBOutlet weak var movieTableView: UITableView!
     
+    
     var movieID: [Int] = []
     var id: Int = 0
     let movieURL: URL = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=a1ed7e8545b60db92d1bd8fced7532bc&language=ko&page=1&region=KR")!
