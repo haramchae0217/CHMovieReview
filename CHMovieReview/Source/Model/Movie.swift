@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct MovieService: Decodable {
+struct Results: Decodable {
     var results: [Movie]
 }
 

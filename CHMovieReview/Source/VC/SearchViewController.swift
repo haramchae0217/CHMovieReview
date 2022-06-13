@@ -16,7 +16,7 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        filteredMovie = MyDB.movieList
+//        filteredMovie = MyDB.movieList
         
         tableViewSet()
         searchBarSet()
@@ -74,7 +74,7 @@ extension SearchViewController: UITableViewDelegate {
 extension SearchViewController: UISearchControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate {
     func updateSearchResults(for searchController: UISearchController) {
         if let movieTitle = searchController.searchBar.text {
-            filteredMovie = MyDB.movieList.filter{ $0.title.lowercased().contains(movieTitle) }
+//            filteredMovie = MyDB.movieList.filter{ $0.title.lowercased().contains(movieTitle) }
             movieTableView.reloadData()
         }
     }
@@ -84,7 +84,7 @@ extension SearchViewController: UISearchControllerDelegate, UISearchResultsUpdat
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        filteredMovie = MyDB.movieList
+//        filteredMovie = MyDB.movieList
         movieTableView.reloadData()
     }
 }
